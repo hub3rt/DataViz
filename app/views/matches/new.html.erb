@@ -1,0 +1,12 @@
+	<%= simple_form_for @match do |f|%>
+	<%= f.input :matchday, label: "Journée de championnat"%>
+	<%= f.input :home_team, label: "Equipe hôte"%>
+	<%= f.input :home_prevision, label: "Chance de victoire de l'équipe hôte"%>
+	<%= f.input :home_score, label: "Score de l'équipe hôte"%>
+	<%= f.input :draw_prevision, label: "Chance de nul"%>
+	<%= f.input :away_team, label: "Nom de l'équipe invitée"%>
+	<%= f.input :away_prevision, label: "Chance de victoire de l'équipe invitée"%>
+	<%= f.input :away_score, label: "Score de l'équipe hôte" %>
+	<%= f.association :championnat, label: "Sélectionner un Championnat"%>
+	<%= f.button :submit, "Valider", class: "btn"%>
+	<%end%>

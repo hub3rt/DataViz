@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InitRails</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "https://www.google.com/jsapi" %>
+  </head>
+
+  <body>
+  <%= render partial:'application/header'%>
+    <main>
+    <%= yield%>
+    </main>
+  <%= render partial:'application/footer'%>
+  </body>
+</html>

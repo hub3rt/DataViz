@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Back Office</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+
+  <body>
+    <%= render partial:'admin/nav'%>
+      <main>
+      	<%= yield %>
+      </main>
+    <%= render partial: 'application/footer'%>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<div class="container">
+<div class="row">
+	<div class="col s10 offset s1">
+		<div class="row">
+			<div class="center-align">
+				<h2 class="flow-text"><%= @championnat.name%></h2>
+			</div>
+		</div>
+		<div class="center-align">
+		<table class="highlight centered">
+			<thead>
+				<tr>
+					<td>Equipe à domicile</td>
+					<td>Score</td>
+					<td>Chance de victoire</td>
+					<td>Chance de nul</td>
+					<td>Chance de victoire</td>
+					<td>Score</td>
+					<td>Equipe à l'extérieur</td>
+				</tr>
+			</thead>
+			<tbody>
+				<% @matches.each do |match| %>
+					<tr>
+						<td><%= match.home_team %></td>
+						<td><%= match.home_score %></td>
+						<td><%= match.home_prevision %> %</td>
+						<td><%= match.draw_prevision%> %</td>
+						<td><%=match.away_prevision%> %</td>
+						<td><%=match.away_score%></td>
+						<td><%=match.away_team%></td>
+					</tr>
+				<% end%>
+			</tbody>
+		</table>
+		
+		</div>
+		<div class="center-align">
+			<%= will_paginate @matches %>
+		</div>
+	</div>
+</div>
+</div>

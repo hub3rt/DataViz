@@ -1,0 +1,40 @@
+<div class="row">
+	<div class="col.s12.m6">
+		<div class="card">
+			<div class="card-content">
+				<span class='card-title'><%= @match.home_team%> - <%= @match.away_team %></span>
+				<div class='card-action'>
+					<table>
+						<thead>
+							<tr>
+								<td>Journée de championnat</td>
+						<td>Equipe hôte</td>
+						<td >Chance de victoire</td>
+						<td>Score</td>
+						<td>Chance de nul</td>
+						<td>Equipe reçue</td>
+						<td>Chance de victoire</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><%=@match.matchday%></td>
+								<td><%=@match.home_team%></td>
+								<td><%=@match.home_prevision%> %</td>
+								<td><%=@match.home_score%> - <%=@match.away_score%></td>
+								<td><%=@match.draw_prevision%> %</td>
+								<td><%=@match.away_team%></td>
+								<td><%=@match.away_prevision%> %</td>
+							</tr>
+						</tbody>
+					</table>
+					<%= pie_chart ({"Victoire domicile" => @match.home_prevision, 
+						"Victoire extérieur" => @match.away_prevision, 
+						"Nul" => @match.away_prevision })%>
+					<a  class='waves-effect waves-light btn' href='<%= matches_path %>'>Retour</a>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>

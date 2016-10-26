@@ -1,0 +1,23 @@
+<H2 class="flow-text">Liste des championnats</H2>
+<%= link_to "Nouveau Championnat", new_championnat_path ,class:'btn waves-effect waves-light' %>
+<div class="row">
+	<% @championnats.each do |championnat| %>
+		<div class="col.s12.m6">
+			<div class="card">
+				<div class="card-content -panel hoverable">
+					<span class='card-title'> <%=championnat.name%></span>
+				</div>
+				<div class="card-action">
+					<%= link_to "<i class='icon-search material-icons right'>search</i>Détails".html_safe, championnat_path(championnat.id),
+					class:  'btn waves-effect waves-light blue' %>
+					<%= link_to "<i class='material-icons'>mode_edit</i>".html_safe, edit_championnat_path(championnat.id),
+					class:  'btn waves-effect waves-light orange'%>
+					<%= link_to "<i class='material-icons'>delete</i>".html_safe,championnat_path(championnat.id),
+					class:  'btn waves-effect waves-light red',
+					method: :delete,
+					data: { confirm: 'Confirmer la suppression ?' }%>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>
