@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20161023194122) do
   end
 
   create_table "matches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "matchyear"
     t.integer  "matchday"
     t.string   "home_team"
     t.float    "home_prevision", limit: 24

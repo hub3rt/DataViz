@@ -1,11 +1,13 @@
 <H2>Liste des matchs</H2>
 <%= link_to "Nouveau match", new_match_path ,class:'btn waves-effect waves-light' %>
+<%= link_to "Lancer l'algorithme", {controller:'matches', action:'launch'},method:'GET', class:'btn waves-effect waves-light' %>
 <div class="row">
 	
 		<div class="col s12">
 			<table class='highlight responsive-table'>
 				<thead>
 					<tr>
+						<td>Année de Championnat</td>
 						<td>Journée de championnat</td>
 						<td>Equipe hôte</td>
 						<td >Chance de victoire</td>
@@ -20,11 +22,12 @@
 				<tbody>
 					<% @matches.each do |match| %>
 					<tr data-link="<%= match_path(match.id) %>">
+						<td><%=match.matchyear%></td>
 						<td><%=match.matchday%></td>
 						<td><%=match.home_team%></td>
-						<td><%=match.home_prevision%> %</td>
+						<td><%= match.home_prevision%> %</td>
 						<td><%=match.home_score%> - <%=match.away_score%></td>
-						<td><%=match.draw_prevision%> %</td>
+						<td><%= match.draw_prevision%> %</td>
 						<td><%=match.away_team%></td>
 						<td><%=match.away_prevision%> %</td>
 						<td><%= link_to "<i class='material-icons'>search</i>".html_safe, match_path(match.id)%></td>
@@ -39,11 +42,14 @@
 		</div>
 	
 </div>
+<div class="center-align">
+	<%= will_paginate @matches %>
+</div>
 <div class="row">
 	<div class="col s12">
 		<div class="col s12">
-			<%= pie_chart @matches.group(:home_team).sum(:home_score) %>
-			<%= column_chart @matches.group(:home_team, :away_team).count %>
+			<%= column_chart @matches.order(:matchday).group(:home_team).sum(:home_score) %>
+			<%= area_chart @matches.group(:matchyear).order(:home_team, :away_team).count %>
 		</div>
 	</div>
 </div>

@@ -18,7 +18,9 @@ class MatchesController < ApplicationController
 	end
 
 	def index
-		@matches = Match.all
+		@championnat = Championnat.find_by(name: "Ligue 1")
+		@matches = Match.where(championnat: @championnat).order(matchyear: :asc, matchday: :asc).paginate(:page => params[:page], :per_page => 100)
+
 
 	end
 
@@ -44,4 +46,10 @@ class MatchesController < ApplicationController
 		@match.destroy
 		redirect_to matches_path
 	end
+	def launch
+		# ex : PredictionJob.new.async.perform
+		PredictionJob.perform_async
+		redirect_to matches_path
+	end
+
 end
